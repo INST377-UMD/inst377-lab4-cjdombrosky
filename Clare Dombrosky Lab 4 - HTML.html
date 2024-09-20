@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <title>INST377 Lab 4</title>
+        <link rel="stylesheet" href="Clare Dombrosky Lab 4 CSS.css"> 
+    </head>
+
+    <body>
+        <h1 id="myHeader">INST377 Lab 4</h1>
+        <div id="div1" class="four">
+        <form name="nameCheck" onsubmit="return(nameForm())">
+            <label>First Name</label>
+            <input type="text" placeholder="Name" id="fName" required>
+            <br>
+            <input type="submit" value="Alert Me">
+        </form>
+        </div>
+
+        <div id="div2" class="four">
+            <button onclick="changeColor()">Change Background Color</button>
+        </div>
+
+        <div id="div3" class="four">
+            <form name="contactForm" onsubmit="return(formValidation())">
+                <label>Text Tester</label>
+                <input type="text" placeholder="Text" id="myWord">
+                <br>
+                <input type="submit" value="Validate Text">
+            </form>
+        </div>
+
+        <div id="div4" class="four">
+            <button onclick="changeText()">Add Text</button>
+        </div>
+
+        <script type="text/javascript">
+            function formValidation() {
+                var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                if(document.contactForm.myWord.value === "") {
+                    alert('Enter text please!!!');
+                    return false;
+                }
+                if (validation.test(document.contactForm.myWord.value)) {
+                    alert('Noooooooooooo :( try again')
+                    return false
+                }
+                return true;
+            }
+            function nameForm() {
+                var ret = "Hi " + document.nameCheck.fName.value + "!"
+                alert(ret)
+                return true
+            }
+            function changeColor() {
+                if (document.body.style.backgroundColor == 'peachpuff') {
+                    document.body.style.backgroundColor = 'lightsalmon'
+                }
+                else {
+document.body.style.backgroundColor = 'peachpuff'
+                }
+            }
+            function changeText() {
+                document.getElementById('myHeader').textContent += " Add Text"
+            }
+        </script>
+    </body>
+</html>
