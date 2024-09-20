@@ -1,9 +1,46 @@
-<!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="Clare Dombrosky Lab 4 CSS.css">
+        <title>INST377 - Form Validation</title>
+        <link rel="stylesheet" href="Clare Dombrosky Lab 4 CSS.css"> 
     </head>
+
     <body>
-        <p>Hello, world?</p>
+        <div class="four">
+        <form name="nameCheck" onsubmit="return(nameForm())">
+            <label>First Name</label>
+            <input type="text" placeholder="Name" id="fName">
+            <br>
+            <input type="submit">
+        </form>
+        </div>
+
+        <div class="four">
+            <form name="contactForm" onsubmit="return(formValidation())">
+                <label>Word Check</label>
+                <input type="text" placeholder="Word" id="myWord">
+                <br>
+                <input type="submit">
+            </form>
+        </div>
+
+        <script type="text/javascript">
+            function formValidation() {
+                var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                if(document.contactForm.myWord.value === "") {
+                    alert('Enter a valid word!!!');
+                    return false;
+                }
+                if (validation.test(document.contactForm.myWord.value)) {
+                    alert('Noooooooooooo :( try again')
+                    return false
+                }
+                return true;
+            }
+            function nameForm() {
+                var ret = "Hi " + document.nameCheck.fName.value + "!"
+                alert(ret)
+                return true
+            }
+        </script>
     </body>
 </html>
